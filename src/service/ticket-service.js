@@ -1,4 +1,4 @@
-const {Util, Connection, Helper, Model} = require('../../node_modules/stashook-utils');
+const {Util, Connection, Helper, Model} = require('stashook-utils');
 const Queries = require('../util/queries');
 const Message = require('../util/message');
 const AttendanceModel = require('../model/Attendance');
