@@ -1,28 +1,28 @@
 const {Util, Connection, Helper, Model} = require('stashook-utils');
 const Queries = require('../util/queries');
 const Message = require('../util/message');
-const AttendanceModel = require('../model/Attendance');
+const TicketModel = require('../model/Ticket');
 
 module.exports = {
-    addAttendance: async (req, res, next) => {
+    addTicket: async (req, res, next) => {
 
-        res.json("Add Attendance");
+        res.json("Add Ticket");
     },
-    markAttendance: async (req, res, next) => {
+    markTicket: async (req, res, next) => {
 
-        res.json("Mark Attendance");
+        res.json("Mark Ticket");
     },
-    blockAttendance: async (req, res, next) => { //softDelete
+    blockTicket: async (req, res, next) => { //softDelete
 
-        res.json("Delete Attendance");
+        res.json("Delete Ticket");
     },
-    searchAttendance: async (req, res, next) => {
+    searchTicket: async (req, res, next) => {
 
-        res.json("Search Attendance");  
+        res.json("Search Ticket");  
     },
 
-    getAttendance: async (req, res, next) => {
+    getTicket: async (req, res, next) => {
 
-        res.json("Get Attendance");  
+        res.json("Get Ticket");  
     }
 }

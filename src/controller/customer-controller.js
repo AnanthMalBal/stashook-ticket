@@ -1,58 +1,57 @@
 const {Util} = require('stashook-utils');
-const Message = require('../util/message');
-const ticketService = require('../service/ticket-service');
+const customerService = require('../service/customer-service');
 
 module.exports = {
-    addTicket: async (req, res, next) => {
+    addCustomer: async (req, res, next) => {
 
         try {
-            ticketService.addTicket(req, res, next);
+            customerService.addCustomer(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);
         }
     },
-    updateTicket: async (req, res, next) => {
+    updateCustomer: async (req, res, next) => {
 
         try {
-            ticketService.updateTicket(req, res, next);
+            customerService.updateCustomer(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);
         }
     },
-    blockTicket: async (req, res, next) => { //softDelete
+    blockCustomer: async (req, res, next) => { //softDelete
 
         try {
-            ticketService.blockTicket(req, res, next);
+            customerService.blockCustomer(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);
         }
     },
-    deleteTicket: async (req, res, next) => { //hardDelete
+    deleteCustomer: async (req, res, next) => { //hardDelete
 
         try {
-            ticketService.deleteTicket(req, res, next);
+            customerService.deleteCustomer(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);
         }
     },
-    searchTicket: async (req, res, next) => {
+    searchCustomer: async (req, res, next) => {
 
         try {
-            ticketService.searchTicket(req, res, next);
+            customerService.searchCustomer(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);
         }
     }
     ,
-    getTicket: async (req, res, next) => {
+    getCustomer: async (req, res, next) => {
 
         try {
-            ticketService.getTicket(req, res, next);
+            customerService.getCustomer(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);
