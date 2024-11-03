@@ -1,17 +1,22 @@
 var express = require('express');
 var router = express.Router();
-const AttendanceController = require('../controller/attendance-controller')
+const { AuthToken } = require('stashook-utils');
+const TicketsController = require('../controller/ticket-controller')
+const multer = require('multer');
+const moment = require('moment');
 
-router.post('/createAttendance', AttendanceController.addAttendance);
+router.post('/addTicket', AuthToken.validateToken, TicketsController.addTicket);
 
-router.post('/updateAttendance', AttendanceController.updateAttendance);
+router.post('/updateTicket', AuthToken.validateToken, TicketsController.updateTicket);
 
-router.post('/blockAttendance', AttendanceController.blockAttendance);
+router.post('/blockTicket', AuthToken.validateToken, TicketsController.blockTicket);
 
-router.post('/deleteAttendance', AttendanceController.deleteAttendance);
+router.post('/deleteTicket', AuthToken.validateToken, TicketsController.deleteTicket);
 
-router.post('/searchAttendance', AttendanceController.searchAttendance);
+router.post('/approveTicket', AuthToken.validateToken, TicketsController.approveTicket);
 
-router.post('/getAttendance', AttendanceController.getAttendance);
+router.post('/searchTicket', AuthToken.validateToken, TicketsController.searchTicket);
+
+router.get('/getTicket', AuthToken.validateToken, TicketsController.getTicket);
 
 module.exports = router;

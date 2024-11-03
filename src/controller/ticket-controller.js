@@ -1,5 +1,5 @@
 const {Util} = require('stashook-utils');
-const Message = require('../util/message');
+
 const ticketService = require('../service/ticket-service');
 
 module.exports = {
@@ -12,6 +12,7 @@ module.exports = {
             Util.sendError500(req, res, excep);
         }
     },
+
     updateTicket: async (req, res, next) => {
 
         try {
@@ -39,6 +40,15 @@ module.exports = {
             Util.sendError500(req, res, excep);
         }
     },
+    approveTicket: async (req, res, next) => { //hardDelete
+
+        try {
+            ticketService.approveTicket(req, res, next);
+        }
+        catch (excep) {
+            Util.sendError500(req, res, excep);
+        }
+    },
     searchTicket: async (req, res, next) => {
 
         try {
@@ -47,12 +57,20 @@ module.exports = {
         catch (excep) {
             Util.sendError500(req, res, excep);
         }
-    }
-    ,
+    },
     getTicket: async (req, res, next) => {
 
         try {
             ticketService.getTicket(req, res, next);
+        }
+        catch (excep) {
+            Util.sendError500(req, res, excep);
+        }
+    },
+    getTicketList: async (req, res, next) => {
+
+        try {
+            ticketService.getTicketList(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);
