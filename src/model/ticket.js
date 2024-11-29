@@ -4,7 +4,7 @@ const moment = require('moment');
 module.exports = new class TicketModel extends Model {
 
   constructor() {
-    super('ticket'); // Table Name
+    super('tix_ticket'); // Table Name
   }
 
   searchData(req) {

@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 const { AuthToken } = require('stashook-utils');
 const TicketsController = require('../controller/ticket-controller')
-const multer = require('multer');
-const moment = require('moment');
 
 router.post('/addTicket', AuthToken.validateToken, TicketsController.addTicket);
 

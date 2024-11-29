@@ -4,8 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var cookBookRouter = require('./src/routes/cookbook-router');
+var incidentRouter = require('./src/routes/incident-router');
 var ticketRouter = require('./src/routes/ticket-router');
-
 
 var app = express();
 
@@ -21,8 +22,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const CONTEXT_PATH = '/stashook';
 
+app.use(CONTEXT_PATH, cookBookRouter);
+app.use(CONTEXT_PATH, incidentRouter);
 app.use(CONTEXT_PATH, ticketRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
