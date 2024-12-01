@@ -5,6 +5,8 @@ const CookController = require('../controller/cookbook-controller')
 
 router.post('/searchCookBook', AuthToken.validateToken, CookController.searchCookBook);
 
+router.post('/searchTraceCookBook', AuthToken.validateToken, CookController.searchTraceCookBook);
+
 router.post('/getCookBook', AuthToken.validateToken, CookController.getCookBook);
 
 router.post('/addCookBook', AuthToken.validateToken, CookController.addCookBook);

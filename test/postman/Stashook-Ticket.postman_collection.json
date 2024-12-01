@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "d83b9420-4544-4351-a2af-58575343dadc",
+		"name": "Stashook-Ticket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6436539"
+	},
+	"item": [
+		{
+			"name": "CookBook",
+			"item": [
+				{
+					"name": "Search-Cook Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryId\" : \"\",\r\n    \"searchTerm\":\"\",\r\n    \"page\":1,\r\n    \"perPage\":15,\r\n    \"sort\": \"modifiedDate desc\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/stashook/searchCookBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"stashook",
+								"searchCookBook"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search-Leave",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"status\": \"Availed\",\r\n   \"fromDate\": \"2024-10-01\",\r\n   \"toDate\": \"2024-11-28\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9100/stashook/searchLeave",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9100",
+									"path": [
+										"stashook",
+										"searchLeave"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-3ikT7hw8gDdfSKZ7ixqllCyCywM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Oct 2024 08:01:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"success\",\n    \"message\": \"No Data Found.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Search- Trace-Cook Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"searchTerm\":\"Panel E025\",\r\n    \"page\":1,\r\n    \"perPage\":10,\r\n    \"sort\": \"modifiedDate desc\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/stashook/searchTraceCookBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"stashook",
+								"searchTraceCookBook"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search-Leave",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"status\": \"Availed\",\r\n   \"fromDate\": \"2024-10-01\",\r\n   \"toDate\": \"2024-11-28\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9100/stashook/searchLeave",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9100",
+									"path": [
+										"stashook",
+										"searchLeave"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-3ikT7hw8gDdfSKZ7ixqllCyCywM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 23 Oct 2024 08:01:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"success\",\n    \"message\": \"No Data Found.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Cook Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cookId\" : \"CBKbxppasbqrzqsq\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/stashook/getCookBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"stashook",
+								"getCookBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add-Cook Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " { \r\n      \"cookBookName\": \"Solar Panel Beep Sound\", \r\n      \"goLinks\": \"https://www.anewsolar.com.au/solar-inverter-error-codes/\",\r\n      \"categoryId\": \"CID1000001\",\r\n      \"description\": \"Error Code 314\\nError Code 314 on a Fronius inverter means that there is a current sensor calibration timeout or there is an internal system error. Usually, this problem just fixes itself as the inverter repeats its startup routine. If the problem persists, you should contact us on (08) 7078-7620 to investigate the issue.\\n\\nError Code 509\\nIf your Fronius inverter encounters Error Code or State Code 509, it means that there is no energy fed into the grid in the last 24 hours. There could be a lot of reasons for this and one of them is that the solar panels are covered in dirt. One of Anew Solar’s service is solar panel cleaning so you might want to contact us to solve this problem. If it still does not work, we will inspect your inverter further.\\n\\nGrowatt Inverter Error Codes\\nWhenever a Growatt solar inverter experiences faults, it will display the fault or error code. These codes indicate a particular problem or fault that the inverter is in. Listed below are some common error and fault codes that Growatt inverter users may face in the future and how it can be fixed:\\n\\nError Code 102\\nWhen your Growatt solar inverter displays the Error Code 102, it means that the two CPU sampling date is inconsistent. To fix this problem, turn off the DC switch and wait until the inverter is totally shut down. Turn the inverter on again and observe if it still displays the same error.\\n\\nError Code 111\\nAn Error Code 111 usually happens with a Growatt TL3 inverter series. When this error shows up, it means that there is an IGBT drive fault and that you should already contact your solar inverter installer for a checkup.\\n\\nError Code 117\\nAn Error Code 117 on a Growatt solar inverter means that there is a problem in the relay circuit. Try to restart the inverter and if the problem persists, you should already contact your solar inverter installer.\\n\\nError Code 120\\nWhen a Growatt solar inverter displays the Error Code 120, it means that there is a problem with the current sensor. This Error Code is also known as an HCT Fault.\\n\\nFault Codes\\nGrowatt solar inverters can experience two types of faults: system faults and inverter faults.\\n\\nHCT Fault\\nAs stated above, an HCT Fault means that the inverter is having problems with its current sensor. To repair this, simply restart the inverter and if it still isn’t fixed, contact your solar inverter installer.\\n\\nPV Isolation Low\\nPV Isolation Low is a system fault on a Growatt solar inverter. This means that the inverter’s PV insulation impedance is too low or out of range.\",\r\n      \"keywords\": \"PV insulation Growatt\"\r\n }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/stashook/addCookBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"stashook",
+								"addCookBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-Cook Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " { \r\n      \"cookId\": \"CBKbxppasbqrzqsq\",\r\n      \"cookBookName\": \"Solar Panel Beep Sound\", \r\n      \"goLinks\": \"https://www.anewsolar.com.au/solar-inverter-error-codes/\",\r\n      \"categoryId\": \"CID1000001\",\r\n      \"description\": \"Error Code 314\\nError Code 314 on a Fronius inverter means that there is a current sensor calibration timeout or there is an internal system error. Usually, this problem just fixes itself as the inverter repeats its startup routine. If the problem persists, you should contact us on (08) 7078-7620 to investigate the issue.\\n\\nError Code 509\\nIf your Fronius inverter encounters Error Code or State Code 509, it means that there is no energy fed into the grid in the last 24 hours. There could be a lot of reasons for this and one of them is that the solar panels are covered in dirt. One of Anew Solar’s service is solar panel cleaning so you might want to contact us to solve this problem. If it still does not work, we will inspect your inverter further.\\n\\nGrowatt Inverter Error Codes\\nWhenever a Growatt solar inverter experiences faults, it will display the fault or error code. These codes indicate a particular problem or fault that the inverter is in. Listed below are some common error and fault codes that Growatt inverter users may face in the future and how it can be fixed:\\n\\nError Code 102\\nWhen your Growatt solar inverter displays the Error Code 102, it means that the two CPU sampling date is inconsistent. To fix this problem, turn off the DC switch and wait until the inverter is totally shut down. Turn the inverter on again and observe if it still displays the same error.\\n\\nError Code 111\\nAn Error Code 111 usually happens with a Growatt TL3 inverter series. When this error shows up, it means that there is an IGBT drive fault and that you should already contact your solar inverter installer for a checkup.\\n\\nError Code 117\\nAn Error Code 117 on a Growatt solar inverter means that there is a problem in the relay circuit. Try to restart the inverter and if the problem persists, you should already contact your solar inverter installer.\\n\\nError Code 120\\nWhen a Growatt solar inverter displays the Error Code 120, it means that there is a problem with the current sensor. This Error Code is also known as an HCT Fault.\\n\\nFault Codes\\nGrowatt solar inverters can experience two types of faults: system faults and inverter faults.\\n\\nHCT Fault\\nAs stated above, an HCT Fault means that the inverter is having problems with its current sensor. To repair this, simply restart the inverter and if it still isn’t fixed, contact your solar inverter installer.\\n\\nPV Isolation Low\\nPV Isolation Low is a system fault on a Growatt solar inverter. This means that the inverter’s PV insulation impedance is too low or out of range.\",\r\n      \"keywords\": \"PV insulation Growatt UpdateUpdateUpdate Test\"\r\n }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/stashook/updateCookBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"stashook",
+								"updateCookBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Block-Cook Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " { \r\n      \"cookId\": \"CBKbxppasbqrzqsq\",\r\n      \"status\": 0\r\n }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9200/stashook/blockCookBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"stashook",
+								"blockCookBook"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"const preRequest = {\r",
+					"    method: 'POST',\r",
+					"    url: pm.environment.get(\"auth-url\"),\r",
+					"    header: 'Content-Type: application/json',\r",
+					"    body: {\r",
+					"        mode: 'raw',\r",
+					"        raw: JSON.stringify({\r",
+					"            \"username\":pm.environment.get(\"username\"),\r",
+					"            \"password\":pm.environment.get(\"password\")\r",
+					"        })\r",
+					"    }\r",
+					"};\r",
+					" \r",
+					"// Send the pre-request POST request.\r",
+					"pm.sendRequest(preRequest, (err, response) => {\r",
+					"    if (err) {\r",
+					"        console.error('Error:', err);\r",
+					"    } else {\r",
+					"        //console.log('Pre-request script response:', response.json());\r",
+					"        pm.environment.set(\"token\", response.json().accesstoken);\r",
+					"        //console.log(pm.environment.get(\"accessToken\"));\r",
+					"    }\r",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
