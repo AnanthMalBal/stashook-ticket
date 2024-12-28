@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var cookBookRouter = require('./src/routes/cookbook-router');
+var customerRouter = require('./src/routes/customer-router');
 var incidentRouter = require('./src/routes/incident-router');
 var ticketRouter = require('./src/routes/ticket-router');
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const CONTEXT_PATH = '/stashook';
 
 app.use(CONTEXT_PATH, cookBookRouter);
+app.use(CONTEXT_PATH, customerRouter);
 app.use(CONTEXT_PATH, incidentRouter);
 app.use(CONTEXT_PATH, ticketRouter);
 

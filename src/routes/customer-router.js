@@ -3,7 +3,7 @@ var router = express.Router();
 const {AuthToken} = require('stashook-utils');
 const customerController = require('../controller/customer-controller')
 
-router.post('/createCustomer', AuthToken.validateToken, customerController.addCustomer);
+router.post('/addCustomer', AuthToken.validateToken, customerController.addCustomer);
 
 router.post('/updateCustomer', AuthToken.validateToken, customerController.updateCustomer);
 

@@ -1,5 +1,5 @@
-const {Connection, JsonUtil } = require('stashook-utils');
-const Queries = require('../util/queries');
+const {Connection, JsonUtil, Util } = require('stashook-utils');
+const Queries = require('../util/cookbook-queries');
 const Message = require('../util/message');
 const CookBookModel = require('../model/cookbook');
 const Logger = require('../util/logger');
@@ -79,7 +79,13 @@ module.exports = {
 
     getCookBook: async (req, res, next) => {
 
-        Connection.query(Queries.GetCookBook, [JsonUtil.unmaskField(req.body.cookId)], function (error, results) {
+        let cookId = req.body.cookId ? JsonUtil.unmaskField(req.body.cookId) : '';
+
+        let cookBookName = req.body.cookName ? req.body.cookName : cookId ;
+        cookBookName = Util.withPercent(cookBookName.replaceAll(' ','').toLowerCase());
+
+        
+        Connection.query(Queries.GetCookBook, [cookId, cookBookName], function (error, results) {
             if (error || results === undefined || results.length === 0) { 
                 Logger.error("CookBook is Error :: " + error);
                 Logger.error("CookBook is Results Undefined :: " + (results === undefined));

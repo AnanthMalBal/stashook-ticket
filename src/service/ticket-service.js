@@ -1,5 +1,5 @@
 const {Connection, JsonUtil } = require('stashook-utils');
-const Queries = require('../util/queries');
+const Queries = require('../util/ticket-queries');
 const Message = require('../util/message');
 const TicketModel = require('../model/ticket');
 const Logger = require('../util/logger');

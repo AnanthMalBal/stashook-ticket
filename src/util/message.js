@@ -22,4 +22,16 @@ module.exports = {
     UNABLE_TO_BLOCK_COOKBOOK: {type: 'error', message: 'Unable to Block/UnBlock Cook Book. Please Contact Admin.'},
     COOKBOOK_APPROVED_SUCCESSFULLY: {type: 'success', message: 'Cook Book has been Approved/ReferBack Successfully.'},
     UNABLE_TO_APPROVE_COOKBOOK: {type: 'error', message: 'Unable to Approved/ReferBack Cook Book. Please Contact Admin.'},
+
+    
+    CUSTOMER_ADDED_SUCCESSFULLY: {type: 'success', message: 'Customer Added Successfully.'},
+    UNABLE_TO_ADD_CUSTOMER: {type: 'error', message: 'Unable to Add Customer. Please Contact Admin.'},
+    CUSTOMER_UPDATED_SUCCESSFULLY: {type: 'success', message: 'Customer Updated Successfully.'},
+    UNABLE_TO_UPDATE_CUSTOMER: {type: 'error', message: 'Unable to Update Customer. Please Contact Admin.'},
+    CUSTOMER_DELETED_SUCCESSFULLY: {type: 'success', message: 'Customer Deleted Successfully.'},
+    UNABLE_TO_DELETE_CUSTOMER: {type: 'error', message: 'Unable to Delete Customer. Please Contact Admin.'},
+    CUSTOMER_BLOCKED_SUCCESSFULLY: {type: 'success', message: 'Customer has been Blocked/UnBlocked Successfully.'},
+    UNABLE_TO_BLOCK_CUSTOMER: {type: 'error', message: 'Unable to Block/UnBlock Customer. Please Contact Admin.'},
+    CUSTOMER_APPROVED_SUCCESSFULLY: {type: 'success', message: 'Customer has been Approved/ReferBack Successfully.'},
+    UNABLE_TO_APPROVE_CUSTOMER: {type: 'error', message: 'Unable to Approved/ReferBack Customer. Please Contact Admin.'},
 }

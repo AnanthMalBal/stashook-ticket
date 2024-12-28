@@ -1,4 +1,6 @@
-const { Model } = require('stashook-utils');
+const {Util, Model } = require('stashook-utils');
+const moment = require('moment');
+const e = require('express');
 
 module.exports = new class TixIncidentModel extends Model {
 
@@ -7,5 +9,50 @@ module.exports = new class TixIncidentModel extends Model {
   }
 
   searchData(req) {
+    let searchData = [];
+    searchData.push(Util.withPercent(req.body.searchTerm));
+    searchData.push(Util.withPercent(req.body.searchTerm));
+    searchData.push(Util.withPercent(req.body.searchTerm));
+    searchData.push(Util.withPercent(req.body.searchTerm));
+    searchData.push(Util.withPercent(req.body.searchTerm));
+    searchData.push(Util.withPercent(req.body.searchTerm));
+    return searchData;
+  }
+
+  createData(req) {
+    return {
+      'incidentId': Util.primaryId('INC'),
+      'cookId': req.body.cookId,
+      'customerId': req.body.customerId,
+      'supportType': req.body.supportType,
+      'description': req.body.description,
+      'taskStatus': 'Open',
+      'taskDuration': 0,
+      'createdBy': req.sessionUser.employeeId,
+      'createdDate': Util.getDate(),
+      'modifiedBy': req.sessionUser.employeeId,
+      'modifiedDate': Util.getDate()
+    }
+  }
+
+  updateData(req) {
+
+    const startDate = moment(req.body.startDateTime);
+    const endDate = moment(new Date());
+
+    let minutes = endDate.diff(startDate, 'minutes') ;
+
+    let updateData = [];
+    updateData.push(req.body.cookId);
+    updateData.push(req.body.supportType);
+    updateData.push(req.body.description);
+    updateData.push('Accepted');
+    updateData.push(minutes);
+    updateData.push(req.sessionUser.employeeId);
+    updateData.push(Util.getDate());
+    updateData.push(req.body.incidentId);
+
+    return updateData ;
   }
 }
+

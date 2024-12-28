@@ -11,10 +11,10 @@ module.exports = {
             Util.sendError500(req, res, excep);
         }
     },
-    addIncident: async (req, res, next) => {
+    createIncident: async (req, res, next) => {
 
         try {
-            incidentService.addIncident(req, res, next);
+            incidentService.createIncident(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);
@@ -34,15 +34,6 @@ module.exports = {
 
         try {
             incidentService.updateIncident(req, res, next);
-        }
-        catch (excep) {
-            Util.sendError500(req, res, excep);
-        }
-    },
-    blockIncident: async (req, res, next) => { //softDelete
-
-        try {
-            incidentService.blockIncident(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);
