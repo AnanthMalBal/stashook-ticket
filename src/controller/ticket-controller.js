@@ -3,10 +3,10 @@ const {Util} = require('stashook-utils');
 const ticketService = require('../service/ticket-service');
 
 module.exports = {
-    addTicket: async (req, res, next) => {
+    createTicket: async (req, res, next) => {
 
         try {
-            ticketService.addTicket(req, res, next);
+            ticketService.createTicket(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);

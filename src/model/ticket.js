@@ -41,21 +41,24 @@ module.exports = new class TicketModel extends Model {
   }
 
   createData(req) {
+    let ticketId = Util.primaryId('TKT');
+    let parentTicketId = req.body.parentTicketId ? req.body.parentTicketId : ticketId;
+    let assignedTo = (req.body.assignedTo && req.body.assignedTo.trim().length() > 0) ? req.body.assignedTo : null;
+    let assignedDate = (req.body.assignedTo && req.body.assignedTo.trim().length() > 0) ? Util.getDate() : null;
+    
     return {
-      'autoId': Util.primaryId(''),
-      'holiday': req.body.holiday,
-      'country': req.body.country,
-      'startDate': moment(req.body.startDate).format('YYYY-MM-DD'),
-      'endDate': moment(req.body.endDate).format('YYYY-MM-DD'),
-      'year': req.body.year,
-      'symbol': req.body.symbol,
-      'zoneArea': req.body.zoneArea,
-      'approvalStatus':'Review',
+      'ticketId': ticketId,
+      'parentTicketId': parentTicketId,
+      'incidentId': req.body.incidentId,
+      'customerId': req.body.customerId,
+      'cookId': req.body.cookId,
+      'ticketStatus': 'Open',
+      'description': req.body.description,
+      'queueId': 'Initial',
+      'assignedTo': assignedTo ,
+      'assignedDate': assignedDate, 
       'createdBy': req.sessionUser.employeeId,
-      'createdDate': Util.getDate(),
-      'modifiedBy': req.sessionUser.employeeId,
-      'modifiedDate': Util.getDate(),
-      'status': 0
+      'createdDate': Util.getDate()
     }
   }
 

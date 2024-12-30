@@ -1,8 +1,8 @@
 module.exports = {
 
     NO_DATA_FOUND : {type: 'success', message: 'No Data Found.'},
-    INCIDENT_ADDED_SUCCESSFULLY: {type: 'success', message: 'Incident Added Successfully.'},
-    UNABLE_TO_ADD_INCIDENT: {type: 'error', message: 'Unable to Add Incident. Please Contact Admin.'},
+    INCIDENT_CREATED_SUCCESSFULLY: {type: 'success', message: 'Incident Created Successfully.'},
+    UNABLE_TO_CREATE_INCIDENT: {type: 'error', message: 'Unable to Create Incident. Please Contact Admin.'},
     INCIDENT_UPDATED_SUCCESSFULLY: {type: 'success', message: 'Incident Updated Successfully.'},
     UNABLE_TO_UPDATE_INCIDENT: {type: 'error', message: 'Unable to Update Incident. Please Contact Admin.'},
     INCIDENT_DELETED_SUCCESSFULLY: {type: 'success', message: 'Incident Deleted Successfully.'},
@@ -11,6 +11,18 @@ module.exports = {
     UNABLE_TO_BLOCK_INCIDENT: {type: 'error', message: 'Unable to Block/UnBlock Incident. Please Contact Admin.'},
     INCIDENT_APPROVED_SUCCESSFULLY: {type: 'success', message: 'Incident has been Approved/ReferBack Successfully.'},
     UNABLE_TO_APPROVE_INCIDENT: {type: 'error', message: 'Unable to Approved/ReferBack Incident. Please Contact Admin.'},
+
+    
+    TICKET_CREATED_SUCCESSFULLY: {type: 'success', message: 'Ticket Created Successfully.'},
+    UNABLE_TO_CREATE_TICKET: {type: 'error', message: 'Unable to Create Ticket. Please Contact Admin.'},
+    TICKET_UPDATED_SUCCESSFULLY: {type: 'success', message: 'Ticket Updated Successfully.'},
+    UNABLE_TO_UPDATE_TICKET: {type: 'error', message: 'Unable to Update Ticket. Please Contact Admin.'},
+    TICKET_DELETED_SUCCESSFULLY: {type: 'success', message: 'Ticket Deleted Successfully.'},
+    UNABLE_TO_DELETE_TICKET: {type: 'error', message: 'Unable to Delete Ticket. Please Contact Admin.'},
+    TICKET_BLOCKED_SUCCESSFULLY: {type: 'success', message: 'Ticket has been Blocked/UnBlocked Successfully.'},
+    UNABLE_TO_BLOCK_TICKET: {type: 'error', message: 'Unable to Block/UnBlock Ticket. Please Contact Admin.'},
+    TICKET_APPROVED_SUCCESSFULLY: {type: 'success', message: 'Ticket has been Approved/ReferBack Successfully.'},
+    UNABLE_TO_APPROVE_TICKET: {type: 'error', message: 'Unable to Approved/ReferBack Ticket. Please Contact Admin.'},
 
     COOKBOOK_ADDED_SUCCESSFULLY: {type: 'success', message: 'Cook Book Added Successfully.'},
     UNABLE_TO_ADD_COOKBOOK: {type: 'error', message: 'Unable to Add Cook Book. Please Contact Admin.'},
@@ -34,4 +46,6 @@ module.exports = {
     UNABLE_TO_BLOCK_CUSTOMER: {type: 'error', message: 'Unable to Block/UnBlock Customer. Please Contact Admin.'},
     CUSTOMER_APPROVED_SUCCESSFULLY: {type: 'success', message: 'Customer has been Approved/ReferBack Successfully.'},
     UNABLE_TO_APPROVE_CUSTOMER: {type: 'error', message: 'Unable to Approved/ReferBack Customer. Please Contact Admin.'},
+
+    UNABLE_TO_SEND_EMAIL: {type: 'error', message: 'Unable to Send Email To Recipitants. Please Contact Admin.'},
 }

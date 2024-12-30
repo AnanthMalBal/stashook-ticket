@@ -3,6 +3,7 @@ const Queries = require('../util/incident-queries');
 const Message = require('../util/message');
 const IncidentModel = require('../model/incident');
 const Logger = require('../util/logger');
+const MediaService = require('./media-template-service');
 const moment = require('moment');
 
 module.exports = {
@@ -31,16 +32,19 @@ module.exports = {
                 if (insResult.affectedRows > 0) {
                     Logger.info("::Queries::Create::IncidentModel:result:: " + JSON.stringify(insResult));
                     req.body.incidentId = insResult.insertId;
+                    req.body.action = 'Create';
+                    req.body.notify = false;
                     next(); // Required to Call getIncident. Check incident-router.js
                 }
             }).catch(error => {
                 // Logger.error("::Queries::Create::IncidentModel::error: " + error);
-                res.json(Message.UNABLE_TO_ADD_INCIDENT);
+                res.json(Message.UNABLE_TO_CREATE_INCIDENT);
             });
     },
 
 
     getIncident: async (req, res, next) => {
+
         Connection.query(Queries.GetIncident, [req.body.incidentId], function (error, results) {
             if (error || results === undefined || results.length === 0) {
                 Logger.error("Incident is Error :: " + error);
@@ -53,7 +57,12 @@ module.exports = {
                 JsonUtil.dates(results, "createdDate", 'DD-MMM-YYYY HH:mm:ss');
                 JsonUtil.dates(results, "modifiedDate", 'DD-MMM-YYYY HH:mm:ss');
 
-                res.json(results[0]);
+                if (req.body.action === 'Create')
+                    res.json(results[0]);
+                if (req.body.notify) {
+                    req.body.incident = results[0]; // Sending Details To Notification
+                    next();
+                }
             }
         });
     },
@@ -61,14 +70,51 @@ module.exports = {
     updateIncident: async (req, res, next) => {
 
         Connection.query(Queries.UpdateIncident, IncidentModel.updateData(req), function (error, results) {
-            if (error || results === undefined || results.affectedRows === 0) res.json(Message.UNABLE_TO_UPDATE_INCIDENT);
-            else {
-                if (results.affectedRows > 0)
-                    res.json(Message.INCIDENT_UPDATED_SUCCESSFULLY);
-
+            if (error || results === undefined || results.affectedRows === 0) {
+                Logger.error("UpdateIncident is Error :: " + error);
+                Logger.error("UpdateIncident is Results Undefined :: " + (results === undefined));
+                res.json(Message.UNABLE_TO_UPDATE_INCIDENT);
             }
+            else {
+                if (results.affectedRows > 0) {
+                    req.body.action = 'Update';
+                    req.body.notify = true;
+                    res.json(Message.INCIDENT_UPDATED_SUCCESSFULLY);
+                }
+            }
+            next(); // Required to Call getIncident. Check incident-router.js
         });
     },
+
+    notificationIncident: async (req, res, next) => {
+        Connection.query(Queries.MessageUserGroup, ['Email', 'IncidentEmailGroup'], function (error, results) {
+            if (error || results === undefined || results.length === 0) {
+                Logger.error("Notification Incident is Error :: " + error);
+                Logger.error("Notification Incident is Results Undefined :: " + (results === undefined));
+            }
+            else if (results && results.length > 0) {
+                req.body.email = {};
+                req.body.messageId = results[0].messageId;
+                req.body.email.to = results[0].toGroup;
+                req.body.email.cc = results[0].ccGroup;
+                req.body.email.bcc = results[0].bccGroup;
+                req.body.email.keyBaseName = 'incident';
+                req.body.email.dataMap = {
+                    "incidentId": req.body.incident.incidentId,
+                    "customerName": req.body.incident.customerName,
+                    "description": req.body.incident.description,
+                    "priority": req.body.incident.priority,
+                    "modifiedDate": req.body.incident.modifiedDate,
+                    "cookBookName": req.body.incident.cookBookName ? req.body.incident.cookBookName : '',
+                    "supportType": req.body.incident.supportType,
+                    "taskStatus": req.body.incident.taskStatus,
+                };
+                req.body.incident = undefined; // On Purpose
+
+                MediaService.sendEmail(req, res, next);
+            }
+        });
+    }
 }
 
 function inHoursMins(num) {

@@ -6,17 +6,17 @@ const Logger = require('../util/logger');
 
 module.exports = {
 
-    addTicket: async (req, res, next) => {
+    createTicket: async (req, res, next) => {
 
         TicketModel.create(TicketModel.createData(req))
             .then(insResult => {
                 if (insResult.affectedRows > 0) {
                     Logger.info("::Queries::Create::TicketModel:result:: " + JSON.stringify(insResult));
-                    res.json(Message.HOLIDAY_ADDED_SUCCESSFULLY);
+                    res.json(Message.TICKET_CREATED_SUCCESSFULLY);
                 }
             }).catch(error => {
                 // Logger.error("::Queries::Create::TicketModel::error: " + error);
-                res.json(Message.UNABLE_TO_ADD_HOLIDAY);
+                res.json(Message.UNABLE_TO_CREATE_TICKET);
             });
     },
 
@@ -24,10 +24,10 @@ module.exports = {
 
         Connection.query(Queries.UpdateTicket, TicketModel.updateData(req), function (error, results) {
 
-            if (error || results === undefined || results.affectedRows === 0) res.json(Message.UNABLE_TO_UPDATE_HOLIDAY);
+            if (error || results === undefined || results.affectedRows === 0) res.json(Message.UNABLE_TO_UPDATE_TICKET);
             else {
                 if (results.affectedRows > 0) 
-                    res.json(Message.HOLIDAY_UPDATED_SUCCESSFULLY);
+                    res.json(Message.TICKET_UPDATED_SUCCESSFULLY);
 
             }
         });
@@ -37,10 +37,10 @@ module.exports = {
 
         Connection.query(Queries.UpdateBlockTicket, TicketModel.blockData(req), function (error, results) {
 
-            if (error || results === undefined || results.affectedRows === 0) res.json(Message.UNABLE_TO_BLOCK_HOLIDAY);
+            if (error || results === undefined || results.affectedRows === 0) res.json(Message.UNABLE_TO_BLOCK_TICKET);
             else {
                 if (results.affectedRows > 0) 
-                    res.json(Message.HOLIDAY_BLOCKED_SUCCESSFULLY);
+                    res.json(Message.TICKET_BLOCKED_SUCCESSFULLY);
 
             }
         });

@@ -3,7 +3,7 @@ var router = express.Router();
 const { AuthToken } = require('stashook-utils');
 const TicketsController = require('../controller/ticket-controller')
 
-router.post('/addTicket', AuthToken.validateToken, TicketsController.addTicket);
+router.post('/createTicket', AuthToken.validateToken, TicketsController.createTicket);
 
 router.post('/updateTicket', AuthToken.validateToken, TicketsController.updateTicket);
 

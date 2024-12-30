@@ -7,8 +7,8 @@ router.post('/searchIncident', AuthToken.validateToken, IncidentController.searc
 
 router.post('/getIncident', AuthToken.validateToken, IncidentController.getIncident);
 
-router.post('/createIncident', AuthToken.validateToken, IncidentController.createIncident, IncidentController.getIncident );
+router.post('/createIncident', AuthToken.validateToken, IncidentController.createIncident, IncidentController.getIncident);
 
-router.post('/updateIncident', AuthToken.validateToken, IncidentController.updateIncident);
+router.post('/updateIncident', AuthToken.validateToken, IncidentController.updateIncident, IncidentController.getIncident, IncidentController.incidentNotificationEmail );
 
 module.exports = router;
