@@ -1,5 +1,7 @@
 module.exports = {
 
+    UNABLE_TO_GET_CONFIGURATIONS:{type: 'error', message: 'Unable to Get Configurations. Please Contact Admin.'},
+
     NO_DATA_FOUND : {type: 'success', message: 'No Data Found.'},
     INCIDENT_CREATED_SUCCESSFULLY: {type: 'success', message: 'Incident Created Successfully.'},
     UNABLE_TO_CREATE_INCIDENT: {type: 'error', message: 'Unable to Create Incident. Please Contact Admin.'},

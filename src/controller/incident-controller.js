@@ -1,6 +1,5 @@
 const {Util} = require('stashook-utils');
 const incidentService = require('../service/incident-service');
-const mediaService = require('../service/message-email-service');
 
 module.exports = {
     searchIncident: async (req, res, next) => {

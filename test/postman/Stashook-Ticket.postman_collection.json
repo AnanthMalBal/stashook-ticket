@@ -753,8 +753,8 @@
 					"        console.error('Error:', err);\r",
 					"    } else {\r",
 					"        //console.log('Pre-request script response:', response.json());\r",
-					"        pm.environment.set(\"token\", response.json().accesstoken);\r",
-					"        //console.log(pm.environment.get(\"accessToken\"));\r",
+					"        pm.environment.set(\"token\", response.json().authToken);\r",
+					"        //console.log(pm.environment.get(\"authToken\"));\r",
 					"    }\r",
 					"});"
 				]

@@ -93,13 +93,16 @@ module.exports = {
                 Logger.error("Incident Notification Email is Results Undefined :: " + (results === undefined));
             }
             else if (results && results.length > 0) {
+                req.body.config = {};
+                req.body.config.key = 'IncidentUpdateNotification';
+                req.body.config.property = 'SupportEmail';
                 req.body.email = {};
                 req.body.messageId = results[0].messageId;
                 req.body.email.to = results[0].toGroup;
                 req.body.email.cc = results[0].ccGroup;
                 req.body.email.bcc = results[0].bccGroup;
                 req.body.email.keyBaseName = 'incident';
-                //Email/SMS/Whatsapp Template need dataMap to render message with data
+                //Email/SMS/WhatsApp Template need dataMap to render message with data
                 req.body.email.dataMap = {
                     "incidentId": req.body.incident.incidentId,  // In Email Template {{incident.incidentId}}; i.e. keyBaseName as Start
                     "customerName": req.body.incident.customerName,
