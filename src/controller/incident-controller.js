@@ -1,6 +1,6 @@
 const {Util} = require('stashook-utils');
 const incidentService = require('../service/incident-service');
-const mediaService = require('../service/media-template-service');
+const mediaService = require('../service/message-email-service');
 
 module.exports = {
     searchIncident: async (req, res, next) => {
@@ -44,7 +44,7 @@ module.exports = {
     incidentNotificationEmail: async (req, res, next) => {
 
         try {
-            incidentService.notificationIncident(req, res, next);
+            incidentService.incidentNotificationEmail(req, res, next);
         }
         catch (excep) {
             Util.sendError500(req, res, excep);

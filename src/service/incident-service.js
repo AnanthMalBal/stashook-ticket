@@ -3,7 +3,7 @@ const Queries = require('../util/incident-queries');
 const Message = require('../util/message');
 const IncidentModel = require('../model/incident');
 const Logger = require('../util/logger');
-const MediaService = require('./media-template-service');
+const MediaService = require('./message-email-service');
 const moment = require('moment');
 
 module.exports = {
@@ -86,11 +86,11 @@ module.exports = {
         });
     },
 
-    notificationIncident: async (req, res, next) => {
+    incidentNotificationEmail: async (req, res, next) => {
         Connection.query(Queries.MessageUserGroup, ['Email', 'IncidentEmailGroup'], function (error, results) {
             if (error || results === undefined || results.length === 0) {
-                Logger.error("Notification Incident is Error :: " + error);
-                Logger.error("Notification Incident is Results Undefined :: " + (results === undefined));
+                Logger.error("Incident Notification Email is Error :: " + error);
+                Logger.error("Incident Notification Email is Results Undefined :: " + (results === undefined));
             }
             else if (results && results.length > 0) {
                 req.body.email = {};
@@ -99,8 +99,9 @@ module.exports = {
                 req.body.email.cc = results[0].ccGroup;
                 req.body.email.bcc = results[0].bccGroup;
                 req.body.email.keyBaseName = 'incident';
+                //Email/SMS/Whatsapp Template need dataMap to render message with data
                 req.body.email.dataMap = {
-                    "incidentId": req.body.incident.incidentId,
+                    "incidentId": req.body.incident.incidentId,  // In Email Template {{incident.incidentId}}; i.e. keyBaseName as Start
                     "customerName": req.body.incident.customerName,
                     "description": req.body.incident.description,
                     "priority": req.body.incident.priority,
@@ -124,7 +125,6 @@ function inHoursMins(num) {
         let minutes = num % 60;
 
         if (hours >= 24) {
-            console.log("::actual::: " + hours);
             days = Math.floor(hours / 24);
             hours = hours % 24;
         }
@@ -159,7 +159,6 @@ function createdDateAsStartDateTime(results) {
             row['startDateTime'] = moment(value).format('YYYY-MM-DD HH:mm:ss');
         else
             row['startDateTime'] = Util.getDate();
-        // console.log(">>>>dates>>>>>row[field] >>>>>>> " +  row[field]);
     });
 
 }
