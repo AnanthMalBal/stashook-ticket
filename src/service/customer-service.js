@@ -1,8 +1,7 @@
-const {JsonUtil, Connection} = require('stashook-utils');
+const {JsonUtil, Connection, Logger} = require('stashook-utils');
 const Queries = require('../util/customer-queries');
 const Message = require('../util/message');
 const CustomerModel = require('../model/customer');
-const Logger = require('../util/logger');
 
 module.exports = {
     addCustomer: async (req, res, next) => {

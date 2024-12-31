@@ -1,9 +1,7 @@
-const { Connection, JsonUtil, Util } = require('stashook-utils');
+const { Connection, JsonUtil, Util, Logger, EmailService, ConfigQuery } = require('stashook-utils');
 const Queries = require('../util/incident-queries');
 const Message = require('../util/message');
 const IncidentModel = require('../model/incident');
-const Logger = require('../util/logger');
-const MediaService = require('./message-email-service');
 const moment = require('moment');
 
 module.exports = {
@@ -87,14 +85,14 @@ module.exports = {
     },
 
     incidentNotificationEmail: async (req, res, next) => {
-        Connection.query(Queries.MessageUserGroup, ['Email', 'IncidentEmailGroup'], function (error, results) {
+        Connection.query(ConfigQuery.MessageUserGroup, ['Email', 'IncidentEmailGroup'], function (error, results) {
             if (error || results === undefined || results.length === 0) {
                 Logger.error("Incident Notification Email is Error :: " + error);
                 Logger.error("Incident Notification Email is Results Undefined :: " + (results === undefined));
             }
             else if (results && results.length > 0) {
                 req.body.config = {};
-                req.body.config.key = 'IncidentUpdateNotification';
+                req.body.config.key = 'IncidentUpdateNotification';//Key For Producer Property Cache
                 req.body.config.property = 'SupportEmail';
                 req.body.email = {};
                 req.body.messageId = results[0].messageId;
@@ -115,7 +113,7 @@ module.exports = {
                 };
                 req.body.incident = undefined; // On Purpose
 
-                MediaService.sendEmail(req, res, next);
+                EmailService.sendEmail(req, res, next);
             }
         });
     }

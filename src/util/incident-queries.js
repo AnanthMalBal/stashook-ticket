@@ -13,8 +13,6 @@ module.exports = {
 
     UpdateIncident : `UPDATE tix_incident SET cookId= ?, supportType = ?, priority = ?, description = ?, taskStatus = ?, taskDuration = ?, modifiedBy = ?, modifiedDate = ? WHERE incidentId = ?`,
 
-    MessageUserGroup : `SELECT * FROM tix_media_group WHERE status = 1 AND mediaType = ? AND groupName = ? `,
-
     GetIncident : `SELECT TI.incidentId, CB.cookId, CB.cookBookName, CAT.categoryName, CST.customerId, CST.customerName, CST.mobileNumber, CST.alternateNumber, 
     CST.address, TI.supportType, TI.description, TI.taskStatus, TI.taskDuration, TI.priority, CONCAT(U1.userName, '(', U1.userId, ')') AS modifiedBy, TI.modifiedDate 
     FROM tix_incident TI 

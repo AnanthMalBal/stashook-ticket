@@ -1,8 +1,7 @@
-const {Connection, JsonUtil, Util } = require('stashook-utils');
+const {Connection, JsonUtil, Util, Logger } = require('stashook-utils');
 const Queries = require('../util/cookbook-queries');
 const Message = require('../util/message');
 const CookBookModel = require('../model/cookbook');
-const Logger = require('../util/logger');
 
 module.exports = {
     searchCookBook: async (req, res, next) => {
