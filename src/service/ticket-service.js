@@ -10,14 +10,14 @@ module.exports = {
         TicketModel.create(TicketModel.createData(req))
             .then(insResult => {
                 if (insResult.affectedRows > 0) {
-                    Logger.info("::Queries::Create::TicketModel:result:: " + JSON.stringify(insResult));
+                    //Logger.info("::Queries::Create::TicketModel:result:: " + JSON.stringify(insResult));
                     res.json(Message.TICKET_CREATED_SUCCESSFULLY);
                 }
             }).catch(error => {
                 // Logger.error("::Queries::Create::TicketModel::error: " + error);
                 res.json(Message.UNABLE_TO_CREATE_TICKET);
             });
-    },
+        },
 
     updateTicket: async (req, res, next) => {
 
