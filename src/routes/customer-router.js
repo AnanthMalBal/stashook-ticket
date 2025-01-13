@@ -17,7 +17,7 @@ let corsOptionsDelegate = function (req, callback) {
 router.options('*',cors());
 
 
-router.post('/addCustomer', AuthToken.validateToken, customerController.addCustomer);
+router.post('/addCustomer', cors(corsOptionsDelegate),AuthToken.validateToken, customerController.addCustomer);
 
 router.post('/updateCustomer', AuthToken.validateToken, customerController.updateCustomer);
 
